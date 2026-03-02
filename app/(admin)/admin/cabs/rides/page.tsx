@@ -89,7 +89,7 @@ export default function CabsRidesPage() {
     }
 
     return filtered
-  }, [mockRides, searchQuery, selectedCity, selectedStatus, sortKey, sortDirection])
+  }, [searchQuery, selectedCity, selectedStatus, sortKey, sortDirection])
 
   const totalPages = Math.ceil(filteredRides.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage

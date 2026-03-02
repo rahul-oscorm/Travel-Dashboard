@@ -76,6 +76,12 @@ export default function CabsOverviewPage() {
 
   const recentRides = mockRides.slice(0, 5)
 
+  const getTableActions = (row: CabRide) => [
+    { label: 'View Details', icon: Eye, onClick: () => console.log('View', row.id) },
+    { label: 'Edit', icon: Edit, onClick: () => console.log('Edit', row.id) },
+    { label: 'Cancel Ride', icon: XCircle, variant: 'destructive' as const, onClick: () => console.log('Cancel', row.id) },
+  ]
+
   const statusBreakdown: { status: RideStatus; count: number; label: string }[] = [
     { status: 'completed', count: mockRides.filter(r => r.rideStatus === 'completed').length, label: 'Completed' },
     { status: 'ongoing', count: mockRides.filter(r => r.rideStatus === 'ongoing').length, label: 'Ongoing' },
@@ -164,24 +170,7 @@ export default function CabsOverviewPage() {
           sortKey={sortKey}
           sortDirection={sortDirection}
           onSort={handleSort}
-          actions={(row) => [
-            {
-              label: 'View Details',
-              icon: Eye,
-              onClick: () => console.log('View', row.id),
-            },
-            {
-              label: 'Edit',
-              icon: Edit,
-              onClick: () => console.log('Edit', row.id),
-            },
-            {
-              label: 'Cancel Ride',
-              icon: XCircle,
-              variant: 'destructive',
-              onClick: () => console.log('Cancel', row.id),
-            },
-          ]}
+          actions={getTableActions}
           emptyMessage="No rides found"
           emptyIcon={Car}
         />
