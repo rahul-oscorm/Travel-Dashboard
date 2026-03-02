@@ -9,11 +9,11 @@ import {
   DataTable,
   Button,
 } from '@/shared/components'
-import type { Column } from '@/shared/components'
+import type { Column, Action } from '@/shared/components'
 import { Plane, Users, DollarSign, TrendingUp, Eye, Edit, Trash2 } from 'lucide-react'
 import { mockFlightStats, mockFlightBookings } from '@/modules/flights/mockData'
 import { BookingStatusBadge } from '@/modules/flights/components'
-import type { FlightBooking } from '@/modules/flights/types'
+import type { FlightBooking, BookingStatus } from '@/modules/flights/types'
 import { formatCurrency, formatDate } from '@/shared/lib'
 import Link from 'next/link'
 
@@ -46,18 +46,18 @@ export default function FlightsOverviewPage() {
       key: 'travelDate',
       label: 'Travel Date',
       sortable: true,
-      render: (value) => formatDate(value),
+      render: (value) => formatDate(value as string),
     },
     {
       key: 'price',
       label: 'Price',
       sortable: true,
-      render: (value) => formatCurrency(value),
+      render: (value) => formatCurrency(Number(value)),
     },
     {
       key: 'status',
       label: 'Status',
-      render: (value) => <BookingStatusBadge status={value} />,
+      render: (value) => <BookingStatusBadge status={value as BookingStatus} />,
     },
   ]
 
@@ -123,7 +123,7 @@ export default function FlightsOverviewPage() {
           sortKey={sortKey}
           sortDirection={sortDirection}
           onSort={handleSort}
-          actions={(row) => [
+          actions={(row): Action[] => [
             {
               label: 'View Details',
               icon: Eye,

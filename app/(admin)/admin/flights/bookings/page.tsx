@@ -10,11 +10,11 @@ import {
   Card,
   CardContent,
 } from '@/shared/components'
-import type { Column } from '@/shared/components'
+import type { Column, Action } from '@/shared/components'
 import { Plus, Search, Filter, Download, Eye, Edit, Trash2 } from 'lucide-react'
 import { mockFlightBookings } from '@/modules/flights/mockData'
 import { BookingStatusBadge } from '@/modules/flights/components'
-import type { FlightBooking } from '@/modules/flights/types'
+import type { FlightBooking, BookingStatus } from '@/modules/flights/types'
 import { formatCurrency, formatDate } from '@/shared/lib'
 
 export default function FlightBookingsPage() {
@@ -35,7 +35,7 @@ export default function FlightBookingsPage() {
       label: 'Booking Reference',
       sortable: true,
       render: (value) => (
-        <span className="font-medium text-primary-600">{value}</span>
+        <span className="font-medium text-primary-600">{String(value)}</span>
       ),
     },
     {
@@ -52,7 +52,7 @@ export default function FlightBookingsPage() {
       key: 'passengerEmail',
       label: 'Email',
       render: (value) => (
-        <span className="text-gray-600">{value}</span>
+        <span className="text-gray-600">{String(value)}</span>
       ),
     },
     {
@@ -63,20 +63,20 @@ export default function FlightBookingsPage() {
       key: 'travelDate',
       label: 'Travel Date',
       sortable: true,
-      render: (value) => formatDate(value),
+      render: (value) => formatDate(value as string),
     },
     {
       key: 'price',
       label: 'Price',
       sortable: true,
       render: (value) => (
-        <span className="font-semibold">{formatCurrency(value)}</span>
+        <span className="font-semibold">{formatCurrency(Number(value))}</span>
       ),
     },
     {
       key: 'status',
       label: 'Status',
-      render: (value) => <BookingStatusBadge status={value} />,
+      render: (value) => <BookingStatusBadge status={value as BookingStatus} />,
     },
   ]
 
@@ -132,7 +132,7 @@ export default function FlightBookingsPage() {
             sortKey={sortKey}
             sortDirection={sortDirection}
             onSort={handleSort}
-            actions={(row) => [
+            actions={(row): Action[] => [
               {
                 label: 'View Details',
                 icon: Eye,

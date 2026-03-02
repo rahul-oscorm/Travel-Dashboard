@@ -24,7 +24,7 @@ export function Breadcrumb({ className }: BreadcrumbProps) {
         <Home className="h-4 w-4" />
       </Link>
 
-      {breadcrumbs.map((breadcrumb, index) => (
+      {breadcrumbs.map((breadcrumb) => (
         <React.Fragment key={breadcrumb.href}>
           <ChevronRight className="h-4 w-4 text-gray-400" />
           {breadcrumb.isActive ? (

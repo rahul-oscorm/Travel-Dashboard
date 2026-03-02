@@ -15,8 +15,8 @@ import type { Column } from '@/shared/components'
 import { Car, Users, CheckCircle, DollarSign, Eye, Edit, XCircle } from 'lucide-react'
 import { mockCabStats, mockRides } from '@/modules/cabs/mockData'
 import { CabStatusBadge, PaymentStatusBadge } from '@/modules/cabs/components'
-import type { CabRide, RideStatus } from '@/modules/cabs/types'
-import { formatCurrency, formatDate } from '@/shared/lib'
+import type { CabRide, RideStatus, PaymentStatus } from '@/modules/cabs/types'
+import { formatCurrency } from '@/shared/lib'
 import Link from 'next/link'
 
 export default function CabsOverviewPage() {
@@ -34,7 +34,7 @@ export default function CabsOverviewPage() {
       label: 'Ride ID',
       sortable: true,
       render: (value) => (
-        <span className="font-medium text-primary-600">{value}</span>
+        <span className="font-medium text-primary-600">{String(value)}</span>
       ),
     },
     {
@@ -51,7 +51,7 @@ export default function CabsOverviewPage() {
       key: 'vehicleType',
       label: 'Vehicle',
       render: (value) => (
-        <span className="capitalize">{value}</span>
+        <span className="capitalize">{String(value)}</span>
       ),
     },
     {
@@ -59,18 +59,18 @@ export default function CabsOverviewPage() {
       label: 'Fare',
       sortable: true,
       render: (value) => (
-        <span className="font-semibold">{formatCurrency(value, 'INR')}</span>
+        <span className="font-semibold">{formatCurrency(Number(value), 'INR')}</span>
       ),
     },
     {
       key: 'rideStatus',
       label: 'Ride Status',
-      render: (value) => <CabStatusBadge status={value} />,
+      render: (value) => <CabStatusBadge status={value as RideStatus} />,
     },
     {
       key: 'paymentStatus',
       label: 'Payment',
-      render: (value) => <PaymentStatusBadge status={value} />,
+      render: (value) => <PaymentStatusBadge status={value as PaymentStatus} />,
     },
   ]
 

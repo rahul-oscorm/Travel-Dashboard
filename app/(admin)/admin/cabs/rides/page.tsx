@@ -10,11 +10,11 @@ import {
   Card,
   CardContent,
 } from '@/shared/components'
-import type { Column } from '@/shared/components'
+import type { Column, Action } from '@/shared/components'
 import { Plus, Search, Filter, Download, Eye, Edit, XCircle } from 'lucide-react'
 import { mockRides } from '@/modules/cabs/mockData'
 import { CabStatusBadge, PaymentStatusBadge } from '@/modules/cabs/components'
-import type { CabRide, RideStatus } from '@/modules/cabs/types'
+import type { CabRide, RideStatus, PaymentStatus } from '@/modules/cabs/types'
 import { formatCurrency, formatDate } from '@/shared/lib'
 import { useAuth, canDeleteRecords } from '@/core/auth'
 
@@ -101,7 +101,7 @@ export default function CabsRidesPage() {
       label: 'Ride ID',
       sortable: true,
       render: (value) => (
-        <span className="font-medium text-primary-600">{value}</span>
+        <span className="font-medium text-primary-600">{String(value)}</span>
       ),
     },
     {
@@ -113,14 +113,14 @@ export default function CabsRidesPage() {
       key: 'pickupLocation',
       label: 'Pickup',
       render: (value) => (
-        <span className="text-sm text-gray-600">{value}</span>
+        <span className="text-sm text-gray-600">{String(value)}</span>
       ),
     },
     {
       key: 'dropLocation',
       label: 'Drop',
       render: (value) => (
-        <span className="text-sm text-gray-600">{value}</span>
+        <span className="text-sm text-gray-600">{String(value)}</span>
       ),
     },
     {
@@ -137,7 +137,7 @@ export default function CabsRidesPage() {
       key: 'vehicleType',
       label: 'Vehicle',
       render: (value) => (
-        <span className="capitalize">{value}</span>
+        <span className="capitalize">{String(value)}</span>
       ),
     },
     {
@@ -145,24 +145,24 @@ export default function CabsRidesPage() {
       label: 'Fare',
       sortable: true,
       render: (value) => (
-        <span className="font-semibold">{formatCurrency(value, 'INR')}</span>
+        <span className="font-semibold">{formatCurrency(Number(value), 'INR')}</span>
       ),
     },
     {
       key: 'rideStatus',
       label: 'Ride Status',
-      render: (value) => <CabStatusBadge status={value} />,
+      render: (value) => <CabStatusBadge status={value as RideStatus} />,
     },
     {
       key: 'paymentStatus',
       label: 'Payment',
-      render: (value) => <PaymentStatusBadge status={value} />,
+      render: (value) => <PaymentStatusBadge status={value as PaymentStatus} />,
     },
     {
       key: 'rideDate',
       label: 'Date',
       sortable: true,
-      render: (value) => formatDate(value),
+      render: (value) => formatDate(value as string),
     },
   ]
 
@@ -300,7 +300,7 @@ export default function CabsRidesPage() {
             sortDirection={sortDirection}
             onSort={handleSort}
             actions={(row) => {
-              const actions = [
+              const actions: Action[] = [
                 {
                   label: 'View Details',
                   icon: Eye,
@@ -317,7 +317,7 @@ export default function CabsRidesPage() {
                 actions.push({
                   label: 'Cancel Ride',
                   icon: XCircle,
-                  variant: 'destructive' as const,
+                  variant: 'destructive',
                   onClick: () => console.log('Cancel', row.id),
                 })
               }

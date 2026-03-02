@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:clean": "node -e \"try { require('fs').rmSync('.next', { recursive: true, force: true }); console.log('Cleaned .next'); } catch (e) { console.warn('Could not remove .next:', e.message); }\" && next build",
     "start": "next start",
+    "clean": "node -e \"try { require('fs').rmSync('.next', { recursive: true, force: true }); console.log('Cleaned .next'); } catch (e) { console.warn('Could not remove .next:', e.message); }\"",
     "lint": "next lint",
     "type-check": "tsc --noEmit"
   },

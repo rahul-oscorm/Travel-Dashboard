@@ -9,7 +9,7 @@ import { TableSkeleton } from '../skeleton-loader'
 import type { DataTableProps } from './types'
 import { DataTableActions } from './data-table-actions'
 
-export function DataTable<T extends Record<string, unknown>>({
+export function DataTable<T extends object>({
   columns,
   data,
   loading = false,
@@ -103,8 +103,8 @@ export function DataTable<T extends Record<string, unknown>>({
                     className="whitespace-nowrap px-6 py-4 text-sm text-gray-900"
                   >
                     {column.render
-                      ? column.render(row[column.key], row)
-                      : row[column.key]}
+                      ? column.render((row as Record<string, unknown>)[column.key], row)
+                      : String((row as Record<string, unknown>)[column.key] ?? '')}
                   </td>
                 ))}
                 {actions && (

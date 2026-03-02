@@ -56,9 +56,11 @@ class ApiClient {
     }
 
     if (error.response) {
-      const data = error.response.data as any
+      const data = error.response.data as
+        | { message?: string; errors?: Record<string, string[]> }
+        | undefined
 
-      apiError.message = data?.message || error.message
+      apiError.message = data?.message ?? error.message
       apiError.errors = data?.errors
 
       if (error.response.status === 401) {
