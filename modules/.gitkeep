@@ -1,0 +1,6 @@
+# Feature modules will be added here
+# Each module should be self-contained with its own:
+# - components/
+# - hooks/
+# - types/
+# - services/
