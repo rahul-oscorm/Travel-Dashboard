@@ -19,7 +19,7 @@ const flightStatusConfig: Record<
   delayed: { variant: 'warning', label: 'Delayed' },
 }
 
-export function FlightStatusBadge({ status, className }: FlightStatusBadgeProps) {
+export function FlightStatusBadge({ status, className }: FlightStatusBadgeProps): React.ReactElement {
   const config = flightStatusConfig[status]
 
   return (

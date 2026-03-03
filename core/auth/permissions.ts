@@ -1,9 +1,14 @@
 import type { AuthUser } from './types'
 
-export type Permission = 'view_finance' | 'delete_records' | 'manage_users' | 'view_reports'
+export type Permission =
+  | 'view_finance'
+  | 'delete_records'
+  | 'manage_users'
+  | 'view_reports'
+  | 'cancel_flight'
 
 const rolePermissions: Record<'admin' | 'manager', Permission[]> = {
-  admin: ['view_finance', 'delete_records', 'manage_users', 'view_reports'],
+  admin: ['view_finance', 'delete_records', 'manage_users', 'view_reports', 'cancel_flight'],
   manager: ['view_reports'],
 }
 
@@ -20,4 +25,8 @@ export function canDeleteRecords(user: AuthUser | null): boolean {
 
 export function canViewFinance(user: AuthUser | null): boolean {
   return hasPermission(user, 'view_finance')
+}
+
+export function canCancelFlight(user: AuthUser | null): boolean {
+  return hasPermission(user, 'cancel_flight')
 }

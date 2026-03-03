@@ -17,7 +17,7 @@ const bookingStatusConfig: Record<
   completed: { variant: 'info', label: 'Completed' },
 }
 
-export function BookingStatusBadge({ status, className }: BookingStatusBadgeProps) {
+export function BookingStatusBadge({ status, className }: BookingStatusBadgeProps): React.ReactElement {
   const config = bookingStatusConfig[status]
 
   return (

@@ -1,1 +1,1 @@
-export { FlightStatusBadge, BookingStatusBadge } from './Flights'
+export { FlightStatusBadge, BookingStatusBadge, PaymentStatusBadge } from './Flights'

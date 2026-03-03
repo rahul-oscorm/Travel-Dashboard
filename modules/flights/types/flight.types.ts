@@ -1,37 +1,75 @@
-import type { BaseEntity, Status } from '@/core/types'
+import type { BaseEntity } from '@/core/types'
+
+// ---------------------------------------------------------------------------
+// Airline
+// ---------------------------------------------------------------------------
+
+export type AirlineStatus = 'active' | 'inactive'
+
+export interface Airline {
+  id: string
+  name: string
+  code: string
+  logoUrl: string
+  status: AirlineStatus
+}
+
+// ---------------------------------------------------------------------------
+// Flight
+// ---------------------------------------------------------------------------
+
+export type FlightStatus =
+  | 'scheduled'
+  | 'boarding'
+  | 'departed'
+  | 'arrived'
+  | 'cancelled'
+  | 'delayed'
 
 export interface Flight extends BaseEntity {
   flightNumber: string
-  airline: string
+  airlineId: string
   origin: string
   destination: string
   departureTime: string
   arrivalTime: string
+  duration: number // minutes
   price: number
-  availableSeats: number
   totalSeats: number
+  availableSeats: number
   status: FlightStatus
 }
 
-export type FlightStatus = 'scheduled' | 'boarding' | 'departed' | 'arrived' | 'cancelled' | 'delayed'
+// ---------------------------------------------------------------------------
+// Flight Booking
+// ---------------------------------------------------------------------------
+
+export type BookingStatus = 'confirmed' | 'pending' | 'cancelled' | 'completed'
+
+export type PaymentStatus = 'paid' | 'pending' | 'failed'
 
 export interface FlightBooking extends BaseEntity {
   bookingReference: string
-  flightNumber: string
+  flightId: string
   passengerName: string
   passengerEmail: string
+  passengerPhone: string
   seatNumber: string
   bookingDate: string
   travelDate: string
   price: number
-  status: BookingStatus
+  bookingStatus: BookingStatus
+  paymentStatus: PaymentStatus
 }
 
-export type BookingStatus = 'confirmed' | 'pending' | 'cancelled' | 'completed'
+// ---------------------------------------------------------------------------
+// Stats
+// ---------------------------------------------------------------------------
 
 export interface FlightStats {
   totalFlights: number
-  activeBookings: number
+  activeFlights: number
+  totalBookings: number
   revenue: number
   occupancyRate: number
 }

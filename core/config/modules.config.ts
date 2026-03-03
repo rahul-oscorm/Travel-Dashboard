@@ -41,7 +41,12 @@ export const modules: ModuleConfig[] = [
     icon: Plane,
     route: '/admin/flights',
     enabled: true,
-    description: 'Flight bookings and management',
+    description: 'Flight inventory, bookings and management',
+    subRoutes: [
+      { label: 'Overview', route: '/admin/flights' },
+      { label: 'Inventory', route: '/admin/flights/inventory' },
+      { label: 'Bookings', route: '/admin/flights/bookings' },
+    ],
   },
   {
     key: 'cabs',
