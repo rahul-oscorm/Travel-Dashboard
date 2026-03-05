@@ -15,7 +15,11 @@ export function Sidebar() {
   const { isCollapsed, toggle } = useSidebar()
   const modules = getEnabledModules()
 
-  const [expandedKeys, setExpandedKeys] = useState<Set<string>>(new Set())
+  const [expandedKeys, setExpandedKeys] = useState<Set<string>>(() => {
+    const enabled = getEnabledModules()
+    const withSubRoutes = enabled.filter((m) => m.subRoutes && m.subRoutes.length > 0)
+    return new Set(withSubRoutes.map((m) => m.key))
+  })
 
   useEffect(() => {
     const enabled = getEnabledModules()
@@ -67,7 +71,8 @@ export function Sidebar() {
           {isExpanded && (
             <div className="ml-4 space-y-0.5 border-l-2 border-gray-200 pl-3">
               {module.subRoutes!.map((sub) => {
-                const isSubActive = pathname === sub.route
+                const isSubActive =
+                  pathname === sub.route || pathname.startsWith(sub.route + '/')
                 return (
                   <Link
                     key={sub.route}

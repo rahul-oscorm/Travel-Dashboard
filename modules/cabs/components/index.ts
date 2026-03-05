@@ -1,1 +1,5 @@
-export { CabStatusBadge, PaymentStatusBadge } from './Cabs'
+export { CabStatusBadge, PaymentStatusBadge as PaymentStatusBadgeLegacy } from './Cabs'
+export { RideStatusBadge } from './ride-status-badge'
+export { DriverStatusBadge } from './driver-status-badge'
+export { VehicleStatusBadge } from './vehicle-status-badge'
+export { PaymentStatusBadge } from './PaymentStatusBadgeNew'

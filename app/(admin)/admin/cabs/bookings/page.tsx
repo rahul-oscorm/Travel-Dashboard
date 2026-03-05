@@ -38,11 +38,11 @@ export default function CabsBookingsPage(): React.ReactElement {
   const [sortKey, setSortKey] = useState<string>('createdAt')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc')
 
-  const userMap = useMemo(() => new Map(users.map((u) => [u.id, u])), [])
-  const driverMap = useMemo(() => new Map(drivers.map((d) => [d.id, d])), [])
+  const userMap = useMemo(() => new Map((users ?? []).map((u) => [u.id, u])), [])
+  const driverMap = useMemo(() => new Map((drivers ?? []).map((d) => [d.id, d])), [])
 
   const filteredBookings = useMemo((): BookingRow[] => {
-    let list = bookings.map((b) => ({
+    let list = (bookings ?? []).map((b) => ({
       ...b,
       userName: userMap.get(b.userId)?.name ?? b.userId,
       driverName: driverMap.get(b.driverId)?.name ?? b.driverId,

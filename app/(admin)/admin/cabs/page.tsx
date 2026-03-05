@@ -14,7 +14,7 @@ import {
 import type { Column } from '@/shared/components'
 import { Car, Users, CheckCircle, DollarSign, Eye, Edit, XCircle } from 'lucide-react'
 import { mockCabStats, mockRides } from '@/modules/cabs/mockData'
-import { CabStatusBadge, PaymentStatusBadge } from '@/modules/cabs/components'
+import { CabStatusBadge, PaymentStatusBadgeLegacy } from '@/modules/cabs/components'
 import type { CabRide, RideStatus, PaymentStatus } from '@/modules/cabs/types'
 import { formatCurrency } from '@/shared/lib'
 import Link from 'next/link'
@@ -70,7 +70,7 @@ export default function CabsOverviewPage() {
     {
       key: 'paymentStatus',
       label: 'Payment',
-      render: (value) => <PaymentStatusBadge status={value as PaymentStatus} />,
+      render: (value) => <PaymentStatusBadgeLegacy status={value as PaymentStatus} />,
     },
   ]
 

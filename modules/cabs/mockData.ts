@@ -1,4 +1,11 @@
 import type { CabRide, Driver, Vehicle, CabStats } from './types'
+import type { User } from './types/user.types'
+import type { CabDriver } from './types/driver.types'
+import type { Booking } from './types/booking.types'
+import type { VehicleType } from './types/vehicle-type.types'
+import type { Vehicle as VehicleEntity } from './types/vehicle.types'
+import type { Trip } from './types/trip.types'
+import type { Payment } from './types/payment.types'
 
 export const mockCabStats: CabStats = {
   totalRides: 2847,
@@ -574,4 +581,125 @@ export const mockVehicles: Vehicle[] = [
     createdAt: '2025-10-05T10:00:00',
     updatedAt: '2026-03-02T11:55:00',
   },
+]
+
+// New schema data for bookings page and related views
+export const users: User[] = [
+  { id: 'u1', name: 'Rajesh Kumar', email: 'rajesh.k@email.com', phone: '+91 98765 43210', status: 'active' },
+  { id: 'u2', name: 'Priya Patel', email: 'priya.p@email.com', phone: '+91 98765 43211', status: 'active' },
+  { id: 'u3', name: 'Arjun Reddy', email: 'arjun.r@email.com', phone: '+91 98765 43212', status: 'active' },
+  { id: 'u4', name: 'Sneha Iyer', email: 'sneha.i@email.com', phone: '+91 98765 43213', status: 'active' },
+  { id: 'u5', name: 'Mohammed Ali', email: 'mohammed.a@email.com', phone: '+91 98765 43214', status: 'active' },
+  { id: 'u6', name: 'Deepika Singh', email: 'deepika.s@email.com', phone: '+91 98765 43215', status: 'active' },
+  { id: 'u7', name: 'Vikram Malhotra', email: 'vikram.m@email.com', phone: '+91 98765 43216', status: 'inactive' },
+  { id: 'u8', name: 'Ananya Desai', email: 'ananya.d@email.com', phone: '+91 98765 43217', status: 'active' },
+  { id: 'u9', name: 'Sanjay Kapoor', email: 'sanjay.k@email.com', phone: '+91 98765 43218', status: 'active' },
+  { id: 'u10', name: 'Kavita Nair', email: 'kavita.n@email.com', phone: '+91 98765 43219', status: 'active' },
+]
+
+export const drivers: CabDriver[] = [
+  { id: 'd1', name: 'Amit Sharma', phone: '+91 91234 56701', vehicleId: 'v1', city: 'Delhi', rating: 4.8, isAvailable: true, status: 'active' },
+  { id: 'd2', name: 'Suresh Yadav', phone: '+91 91234 56702', vehicleId: 'v2', city: 'Mumbai', rating: 4.5, isAvailable: false, status: 'active' },
+  { id: 'd3', name: 'Venkat Rao', phone: '+91 91234 56703', vehicleId: 'v3', city: 'Bangalore', rating: 4.9, isAvailable: false, status: 'active' },
+  { id: 'd4', name: 'Ravi Kumar', phone: '+91 91234 56704', vehicleId: 'v4', city: 'Bangalore', rating: 4.7, isAvailable: true, status: 'active' },
+  { id: 'd5', name: 'Anil Mehta', phone: '+91 91234 56705', vehicleId: 'v5', city: 'Mumbai', rating: 4.6, isAvailable: true, status: 'active' },
+  { id: 'd6', name: 'Ramesh Gupta', phone: '+91 91234 56706', vehicleId: 'v6', city: 'Delhi', rating: 4.4, isAvailable: true, status: 'active' },
+  { id: 'd7', name: 'Subhash Das', phone: '+91 91234 56707', vehicleId: 'v7', city: 'Mumbai', rating: 4.7, isAvailable: true, status: 'active' },
+  { id: 'd8', name: 'Krishna Murthy', phone: '+91 91234 56708', vehicleId: 'v8', city: 'Bangalore', rating: 4.9, isAvailable: true, status: 'suspended' },
+]
+
+export const bookings: Booking[] = [
+  { id: 'b1', userId: 'u1', vehicleId: 'v1', driverId: 'd1', pickupAddress: 'Connaught Place, Delhi', dropAddress: 'IGI Airport Terminal 3, Delhi', pickupTime: '2026-03-02T08:30:00.000Z', estimatedFare: 850, status: 'completed', createdAt: '2026-03-02T08:00:00.000Z' },
+  { id: 'b2', userId: 'u2', vehicleId: 'v2', driverId: 'd2', pickupAddress: 'Bandra West, Mumbai', dropAddress: 'Andheri East, Mumbai', pickupTime: '2026-03-02T09:15:00.000Z', estimatedFare: 320, status: 'ongoing', createdAt: '2026-03-02T09:00:00.000Z' },
+  { id: 'b3', userId: 'u3', vehicleId: 'v3', driverId: 'd3', pickupAddress: 'Hitech City, Bangalore', dropAddress: 'MG Road, Bangalore', pickupTime: '2026-03-02T10:00:00.000Z', estimatedFare: 420, status: 'completed', createdAt: '2026-03-02T09:45:00.000Z' },
+  { id: 'b4', userId: 'u4', vehicleId: 'v4', driverId: 'd4', pickupAddress: 'Koramangala, Bangalore', dropAddress: 'Whitefield, Bangalore', pickupTime: '2026-03-02T07:30:00.000Z', estimatedFare: 450, status: 'completed', createdAt: '2026-03-02T07:00:00.000Z' },
+  { id: 'b5', userId: 'u5', vehicleId: 'v5', driverId: 'd5', pickupAddress: 'Marine Drive, Mumbai', dropAddress: 'Juhu Beach, Mumbai', pickupTime: '2026-03-02T11:00:00.000Z', estimatedFare: 380, status: 'confirmed', createdAt: '2026-03-02T10:55:00.000Z' },
+  { id: 'b6', userId: 'u6', vehicleId: 'v6', driverId: 'd6', pickupAddress: 'Dwarka Sector 18, Delhi', dropAddress: 'Cyber Hub, Gurgaon', pickupTime: '2026-03-01T18:30:00.000Z', estimatedFare: 480, status: 'completed', createdAt: '2026-03-01T18:00:00.000Z' },
+  { id: 'b7', userId: 'u7', vehicleId: 'v7', driverId: 'd7', pickupAddress: 'Colaba, Mumbai', dropAddress: 'Bandra, Mumbai', pickupTime: '2026-03-02T06:00:00.000Z', estimatedFare: 420, status: 'completed', createdAt: '2026-03-02T05:30:00.000Z' },
+  { id: 'b8', userId: 'u8', vehicleId: 'v8', driverId: 'd8', pickupAddress: 'MG Road, Bangalore', dropAddress: 'Kempegowda Airport', pickupTime: '2026-03-02T05:00:00.000Z', estimatedFare: 1200, status: 'completed', createdAt: '2026-03-02T04:30:00.000Z' },
+  { id: 'b9', userId: 'u9', vehicleId: 'v6', driverId: 'd6', pickupAddress: 'Chandni Chowk, Delhi', dropAddress: 'Saket, Delhi', pickupTime: '2026-03-01T20:00:00.000Z', estimatedFare: 340, status: 'cancelled', createdAt: '2026-03-01T19:45:00.000Z' },
+  { id: 'b10', userId: 'u10', vehicleId: 'v4', driverId: 'd4', pickupAddress: 'Indiranagar, Bangalore', dropAddress: 'Electronic City, Bangalore', pickupTime: '2026-03-02T12:00:00.000Z', estimatedFare: 520, status: 'pending', createdAt: '2026-03-02T11:55:00.000Z' },
+  { id: 'b11', userId: 'u1', vehicleId: 'v1', driverId: 'd1', pickupAddress: 'Karol Bagh, Delhi', dropAddress: 'Nehru Place, Delhi', pickupTime: '2026-03-01T14:00:00.000Z', estimatedFare: 280, status: 'completed', createdAt: '2026-03-01T13:30:00.000Z' },
+  { id: 'b12', userId: 'u2', vehicleId: 'v2', driverId: 'd2', pickupAddress: 'Powai, Mumbai', dropAddress: 'Colaba, Mumbai', pickupTime: '2026-03-01T16:30:00.000Z', estimatedFare: 780, status: 'completed', createdAt: '2026-03-01T16:00:00.000Z' },
+  { id: 'b13', userId: 'u3', vehicleId: 'v3', driverId: 'd3', pickupAddress: 'Jayanagar, Bangalore', dropAddress: 'HSR Layout, Bangalore', pickupTime: '2026-03-02T07:00:00.000Z', estimatedFare: 340, status: 'completed', createdAt: '2026-03-02T06:30:00.000Z' },
+  { id: 'b14', userId: 'u4', vehicleId: 'v4', driverId: 'd4', pickupAddress: 'Bellandur, Bangalore', dropAddress: 'Marathahalli, Bangalore', pickupTime: '2026-03-01T11:00:00.000Z', estimatedFare: 290, status: 'completed', createdAt: '2026-03-01T10:30:00.000Z' },
+  { id: 'b15', userId: 'u5', vehicleId: 'v5', driverId: 'd5', pickupAddress: 'Andheri, Mumbai', dropAddress: 'Bandra, Mumbai', pickupTime: '2026-03-02T13:00:00.000Z', estimatedFare: 350, status: 'ongoing', createdAt: '2026-03-02T12:45:00.000Z' },
+  { id: 'b16', userId: 'u6', vehicleId: 'v6', driverId: 'd6', pickupAddress: 'Rohini, Delhi', dropAddress: 'Connaught Place, Delhi', pickupTime: '2026-03-02T08:00:00.000Z', estimatedFare: 320, status: 'completed', createdAt: '2026-03-02T07:30:00.000Z' },
+  { id: 'b17', userId: 'u7', vehicleId: 'v7', driverId: 'd7', pickupAddress: 'Thane, Mumbai', dropAddress: 'Vashi, Mumbai', pickupTime: '2026-03-01T19:00:00.000Z', estimatedFare: 420, status: 'completed', createdAt: '2026-03-01T18:30:00.000Z' },
+  { id: 'b18', userId: 'u8', vehicleId: 'v4', driverId: 'd4', pickupAddress: 'Jayanagar, Bangalore', dropAddress: 'Koramangala, Bangalore', pickupTime: '2026-03-02T09:00:00.000Z', estimatedFare: 220, status: 'confirmed', createdAt: '2026-03-02T08:45:00.000Z' },
+  { id: 'b19', userId: 'u9', vehicleId: 'v1', driverId: 'd1', pickupAddress: 'Lajpat Nagar, Delhi', dropAddress: 'Hauz Khas, Delhi', pickupTime: '2026-03-01T12:00:00.000Z', estimatedFare: 260, status: 'completed', createdAt: '2026-03-01T11:30:00.000Z' },
+  { id: 'b20', userId: 'u10', vehicleId: 'v3', driverId: 'd3', pickupAddress: 'HSR Layout, Bangalore', dropAddress: 'Silk Board, Bangalore', pickupTime: '2026-03-02T10:30:00.000Z', estimatedFare: 180, status: 'pending', createdAt: '2026-03-02T10:15:00.000Z' },
+  { id: 'b21', userId: 'u1', vehicleId: 'v6', driverId: 'd6', pickupAddress: 'Pitampura, Delhi', dropAddress: 'Rajouri Garden, Delhi', pickupTime: '2026-02-28T17:00:00.000Z', estimatedFare: 310, status: 'completed', createdAt: '2026-02-28T16:30:00.000Z' },
+  { id: 'b22', userId: 'u2', vehicleId: 'v2', driverId: 'd2', pickupAddress: 'Goregaon, Mumbai', dropAddress: 'Malad, Mumbai', pickupTime: '2026-03-01T09:00:00.000Z', estimatedFare: 270, status: 'completed', createdAt: '2026-03-01T08:30:00.000Z' },
+  { id: 'b23', userId: 'u3', vehicleId: 'v3', driverId: 'd3', pickupAddress: 'BTM Layout, Bangalore', dropAddress: 'Jayanagar, Bangalore', pickupTime: '2026-03-02T14:00:00.000Z', estimatedFare: 200, status: 'cancelled', createdAt: '2026-03-02T13:45:00.000Z' },
+  { id: 'b24', userId: 'u4', vehicleId: 'v4', driverId: 'd4', pickupAddress: 'Hebbal, Bangalore', dropAddress: 'Yeshwanthpur, Bangalore', pickupTime: '2026-03-01T15:00:00.000Z', estimatedFare: 380, status: 'completed', createdAt: '2026-03-01T14:30:00.000Z' },
+  { id: 'b25', userId: 'u5', vehicleId: 'v5', driverId: 'd5', pickupAddress: 'Kandivali, Mumbai', dropAddress: 'Borivali, Mumbai', pickupTime: '2026-03-02T15:30:00.000Z', estimatedFare: 290, status: 'completed', createdAt: '2026-03-02T15:00:00.000Z' },
+]
+
+export const vehicleTypes: VehicleType[] = [
+  { id: 'vt1', name: 'Hatchback', baseFare: 40, perKmRate: 12, perMinRate: 2, seatingCapacity: 4, status: 'active' },
+  { id: 'vt2', name: 'Sedan', baseFare: 60, perKmRate: 15, perMinRate: 2.5, seatingCapacity: 4, status: 'active' },
+  { id: 'vt3', name: 'SUV', baseFare: 80, perKmRate: 20, perMinRate: 3, seatingCapacity: 6, status: 'active' },
+]
+
+export const vehicles: VehicleEntity[] = [
+  { id: 'v1', typeId: 'vt2', plateNumber: 'DL-01-AB-1234', driverId: 'd1', city: 'Delhi', status: 'active' },
+  { id: 'v2', typeId: 'vt1', plateNumber: 'MH-02-CD-5678', driverId: 'd2', city: 'Mumbai', status: 'active' },
+  { id: 'v3', typeId: 'vt3', plateNumber: 'KA-03-EF-9012', driverId: 'd3', city: 'Bangalore', status: 'active' },
+  { id: 'v4', typeId: 'vt2', plateNumber: 'KA-03-GH-3456', driverId: 'd4', city: 'Bangalore', status: 'active' },
+  { id: 'v5', typeId: 'vt2', plateNumber: 'MH-01-IJ-7890', driverId: 'd5', city: 'Mumbai', status: 'maintenance' },
+  { id: 'v6', typeId: 'vt1', plateNumber: 'DL-08-KL-2345', driverId: 'd6', city: 'Delhi', status: 'active' },
+  { id: 'v7', typeId: 'vt2', plateNumber: 'MH-06-MN-6789', driverId: 'd7', city: 'Mumbai', status: 'active' },
+  { id: 'v8', typeId: 'vt3', plateNumber: 'KA-05-OP-0123', driverId: 'd8', city: 'Bangalore', status: 'inactive' },
+]
+
+export const trips: Trip[] = [
+  { id: 't1', bookingId: 'b1', driverId: 'd1', distanceKm: 18, durationMin: 45, finalFare: 850, startTime: '2026-03-02T08:30:00.000Z', endTime: '2026-03-02T09:15:00.000Z', status: 'completed' },
+  { id: 't2', bookingId: 'b2', driverId: 'd2', distanceKm: 12, durationMin: 35, finalFare: 0, startTime: '2026-03-02T09:15:00.000Z', endTime: '', status: 'ongoing' },
+  { id: 't3', bookingId: 'b3', driverId: 'd3', distanceKm: 22, durationMin: 50, finalFare: 420, startTime: '2026-03-02T10:00:00.000Z', endTime: '2026-03-02T10:50:00.000Z', status: 'completed' },
+  { id: 't4', bookingId: 'b4', driverId: 'd4', distanceKm: 25, durationMin: 55, finalFare: 450, startTime: '2026-03-02T07:30:00.000Z', endTime: '2026-03-02T08:25:00.000Z', status: 'completed' },
+  { id: 't5', bookingId: 'b6', driverId: 'd6', distanceKm: 24, durationMin: 50, finalFare: 480, startTime: '2026-03-01T18:30:00.000Z', endTime: '2026-03-01T19:20:00.000Z', status: 'completed' },
+  { id: 't6', bookingId: 'b7', driverId: 'd7', distanceKm: 20, durationMin: 48, finalFare: 420, startTime: '2026-03-02T06:00:00.000Z', endTime: '2026-03-02T06:48:00.000Z', status: 'completed' },
+  { id: 't7', bookingId: 'b8', driverId: 'd8', distanceKm: 38, durationMin: 55, finalFare: 1200, startTime: '2026-03-02T05:00:00.000Z', endTime: '2026-03-02T05:55:00.000Z', status: 'completed' },
+  { id: 't8', bookingId: 'b11', driverId: 'd1', distanceKm: 14, durationMin: 40, finalFare: 280, startTime: '2026-03-01T14:00:00.000Z', endTime: '2026-03-01T14:40:00.000Z', status: 'completed' },
+  { id: 't9', bookingId: 'b12', driverId: 'd2', distanceKm: 28, durationMin: 65, finalFare: 780, startTime: '2026-03-01T16:30:00.000Z', endTime: '2026-03-01T17:35:00.000Z', status: 'completed' },
+  { id: 't10', bookingId: 'b13', driverId: 'd3', distanceKm: 16, durationMin: 38, finalFare: 340, startTime: '2026-03-02T07:00:00.000Z', endTime: '2026-03-02T07:38:00.000Z', status: 'completed' },
+  { id: 't11', bookingId: 'b15', driverId: 'd5', distanceKm: 15, durationMin: 42, finalFare: 0, startTime: '2026-03-02T13:00:00.000Z', endTime: '', status: 'ongoing' },
+  { id: 't12', bookingId: 'b16', driverId: 'd6', distanceKm: 18, durationMin: 45, finalFare: 320, startTime: '2026-03-02T08:00:00.000Z', endTime: '2026-03-02T08:45:00.000Z', status: 'completed' },
+  { id: 't13', bookingId: 'b17', driverId: 'd7', distanceKm: 22, durationMin: 52, finalFare: 420, startTime: '2026-03-01T19:00:00.000Z', endTime: '2026-03-01T19:52:00.000Z', status: 'completed' },
+  { id: 't14', bookingId: 'b19', driverId: 'd1', distanceKm: 11, durationMin: 28, finalFare: 260, startTime: '2026-03-01T12:00:00.000Z', endTime: '2026-03-01T12:28:00.000Z', status: 'completed' },
+  { id: 't15', bookingId: 'b21', driverId: 'd6', distanceKm: 16, durationMin: 42, finalFare: 310, startTime: '2026-02-28T17:00:00.000Z', endTime: '2026-02-28T17:42:00.000Z', status: 'completed' },
+  { id: 't16', bookingId: 'b22', driverId: 'd2', distanceKm: 10, durationMin: 25, finalFare: 270, startTime: '2026-03-01T09:00:00.000Z', endTime: '2026-03-01T09:25:00.000Z', status: 'completed' },
+  { id: 't17', bookingId: 'b24', driverId: 'd4', distanceKm: 19, durationMin: 48, finalFare: 380, startTime: '2026-03-01T15:00:00.000Z', endTime: '2026-03-01T15:48:00.000Z', status: 'completed' },
+  { id: 't18', bookingId: 'b25', driverId: 'd5', distanceKm: 12, durationMin: 35, finalFare: 290, startTime: '2026-03-02T15:30:00.000Z', endTime: '2026-03-02T16:05:00.000Z', status: 'completed' },
+  { id: 't19', bookingId: 'b9', driverId: 'd6', distanceKm: 0, durationMin: 0, finalFare: 0, startTime: '', endTime: '', status: 'cancelled' },
+  { id: 't20', bookingId: 'b23', driverId: 'd3', distanceKm: 0, durationMin: 0, finalFare: 0, startTime: '', endTime: '', status: 'cancelled' },
+]
+
+export const payments: Payment[] = [
+  { id: 'p1', bookingId: 'b1', userId: 'u1', amount: 850, method: 'upi', transactionId: 'TXN001', status: 'success', createdAt: '2026-03-02T09:20:00.000Z' },
+  { id: 'p2', bookingId: 'b2', userId: 'u2', amount: 320, method: 'card', transactionId: 'TXN002', status: 'pending', createdAt: '2026-03-02T09:15:00.000Z' },
+  { id: 'p3', bookingId: 'b3', userId: 'u3', amount: 420, method: 'cash', transactionId: 'TXN003', status: 'success', createdAt: '2026-03-02T10:55:00.000Z' },
+  { id: 'p4', bookingId: 'b4', userId: 'u4', amount: 450, method: 'upi', transactionId: 'TXN004', status: 'success', createdAt: '2026-03-02T08:30:00.000Z' },
+  { id: 'p5', bookingId: 'b5', userId: 'u5', amount: 380, method: 'card', transactionId: 'TXN005', status: 'pending', createdAt: '2026-03-02T10:58:00.000Z' },
+  { id: 'p6', bookingId: 'b6', userId: 'u6', amount: 480, method: 'upi', transactionId: 'TXN006', status: 'success', createdAt: '2026-03-01T19:25:00.000Z' },
+  { id: 'p7', bookingId: 'b7', userId: 'u7', amount: 420, method: 'card', transactionId: 'TXN007', status: 'success', createdAt: '2026-03-02T06:52:00.000Z' },
+  { id: 'p8', bookingId: 'b8', userId: 'u8', amount: 1200, method: 'card', transactionId: 'TXN008', status: 'success', createdAt: '2026-03-02T06:00:00.000Z' },
+  { id: 'p9', bookingId: 'b9', userId: 'u9', amount: 340, method: 'upi', transactionId: 'TXN009', status: 'refunded', createdAt: '2026-03-01T19:50:00.000Z' },
+  { id: 'p10', bookingId: 'b10', userId: 'u10', amount: 520, method: 'card', transactionId: 'TXN010', status: 'pending', createdAt: '2026-03-02T11:56:00.000Z' },
+  { id: 'p11', bookingId: 'b11', userId: 'u1', amount: 280, method: 'cash', transactionId: 'TXN011', status: 'success', createdAt: '2026-03-01T14:45:00.000Z' },
+  { id: 'p12', bookingId: 'b12', userId: 'u2', amount: 780, method: 'upi', transactionId: 'TXN012', status: 'success', createdAt: '2026-03-01T17:40:00.000Z' },
+  { id: 'p13', bookingId: 'b13', userId: 'u3', amount: 340, method: 'card', transactionId: 'TXN013', status: 'success', createdAt: '2026-03-02T07:42:00.000Z' },
+  { id: 'p14', bookingId: 'b14', userId: 'u4', amount: 290, method: 'upi', transactionId: 'TXN014', status: 'success', createdAt: '2026-03-01T11:35:00.000Z' },
+  { id: 'p15', bookingId: 'b15', userId: 'u5', amount: 350, method: 'card', transactionId: 'TXN015', status: 'pending', createdAt: '2026-03-02T12:48:00.000Z' },
+  { id: 'p16', bookingId: 'b16', userId: 'u6', amount: 320, method: 'cash', transactionId: 'TXN016', status: 'success', createdAt: '2026-03-02T08:50:00.000Z' },
+  { id: 'p17', bookingId: 'b17', userId: 'u7', amount: 420, method: 'upi', transactionId: 'TXN017', status: 'success', createdAt: '2026-03-01T19:55:00.000Z' },
+  { id: 'p18', bookingId: 'b18', userId: 'u8', amount: 220, method: 'card', transactionId: 'TXN018', status: 'pending', createdAt: '2026-03-02T08:48:00.000Z' },
+  { id: 'p19', bookingId: 'b19', userId: 'u9', amount: 260, method: 'upi', transactionId: 'TXN019', status: 'success', createdAt: '2026-03-01T12:32:00.000Z' },
+  { id: 'p20', bookingId: 'b20', userId: 'u10', amount: 180, method: 'card', transactionId: 'TXN020', status: 'pending', createdAt: '2026-03-02T10:18:00.000Z' },
+  { id: 'p21', bookingId: 'b21', userId: 'u1', amount: 310, method: 'cash', transactionId: 'TXN021', status: 'success', createdAt: '2026-02-28T17:45:00.000Z' },
+  { id: 'p22', bookingId: 'b22', userId: 'u2', amount: 270, method: 'upi', transactionId: 'TXN022', status: 'success', createdAt: '2026-03-01T09:28:00.000Z' },
+  { id: 'p23', bookingId: 'b23', userId: 'u3', amount: 200, method: 'card', transactionId: 'TXN023', status: 'failed', createdAt: '2026-03-02T13:50:00.000Z' },
+  { id: 'p24', bookingId: 'b24', userId: 'u4', amount: 380, method: 'upi', transactionId: 'TXN024', status: 'success', createdAt: '2026-03-01T15:52:00.000Z' },
+  { id: 'p25', bookingId: 'b25', userId: 'u5', amount: 290, method: 'card', transactionId: 'TXN025', status: 'success', createdAt: '2026-03-02T16:08:00.000Z' },
 ]

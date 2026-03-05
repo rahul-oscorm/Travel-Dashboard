@@ -54,12 +54,14 @@ export const modules: ModuleConfig[] = [
     icon: Car,
     route: '/admin/cabs',
     enabled: true,
-    description: 'Taxi rides, drivers and vehicles management',
+    description: 'Cab bookings, drivers, vehicles, trips and payments',
     subRoutes: [
       { label: 'Overview', route: '/admin/cabs' },
-      { label: 'Rides', route: '/admin/cabs/rides' },
+      { label: 'Bookings', route: '/admin/cabs/bookings' },
       { label: 'Drivers', route: '/admin/cabs/drivers' },
       { label: 'Vehicles', route: '/admin/cabs/vehicles' },
+      { label: 'Trips', route: '/admin/cabs/trips' },
+      { label: 'Payments', route: '/admin/cabs/payments' },
     ],
   },
   {

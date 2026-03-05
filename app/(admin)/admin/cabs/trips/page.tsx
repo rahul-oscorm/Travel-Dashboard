@@ -22,10 +22,10 @@ const statusLabels: Record<TripStatus, string> = {
 }
 
 export default function CabsTripsPage(): React.ReactElement {
-  const driverMap = useMemo(() => new Map(drivers.map((d) => [d.id, d])), [])
+  const driverMap = useMemo(() => new Map((drivers ?? []).map((d) => [d.id, d])), [])
 
   const rows = useMemo((): TripRow[] => {
-    return trips.map((t) => ({
+    return (trips ?? []).map((t) => ({
       ...t,
       driverName: driverMap.get(t.driverId)?.name ?? t.driverId,
     }))

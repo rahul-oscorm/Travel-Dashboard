@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build
+.next
+out
+build
+dist
+
+# Misc
+*.min.js
+coverage
+.env*
+!.env.example

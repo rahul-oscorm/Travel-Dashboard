@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Badge } from '@/shared/components'
-import type { VehicleStatus } from '../types'
+import type { VehicleStatus } from '../types/vehicle.types'
 
 type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning' | 'info'
 

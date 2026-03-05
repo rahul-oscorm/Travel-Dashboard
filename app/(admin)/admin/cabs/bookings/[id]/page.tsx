@@ -31,16 +31,23 @@ export default function BookingDetailPage(): React.ReactElement {
   const id = typeof params.id === 'string' ? params.id : undefined
 
   const resolved = useMemo(() => {
-    const booking = id ? bookings.find((b) => b.id === id) : undefined
+    const list = bookings ?? []
+    const booking = id ? list.find((b) => b.id === id) : undefined
     if (!booking) return null
-    const user = users.find((u) => u.id === booking.userId)
-    const driver = drivers.find((d) => d.id === booking.driverId)
-    const vehicle = vehicles.find((v) => v.id === booking.vehicleId)
+    const userList = users ?? []
+    const driverList = drivers ?? []
+    const vehicleList = vehicles ?? []
+    const vehicleTypeList = vehicleTypes ?? []
+    const paymentList = payments ?? []
+    const tripList = trips ?? []
+    const user = userList.find((u) => u.id === booking.userId)
+    const driver = driverList.find((d) => d.id === booking.driverId)
+    const vehicle = vehicleList.find((v) => v.id === booking.vehicleId)
     const vehicleType = vehicle
-      ? vehicleTypes.find((vt) => vt.id === vehicle.typeId)
+      ? vehicleTypeList.find((vt) => vt.id === vehicle.typeId)
       : undefined
-    const payment = payments.find((p) => p.bookingId === booking.id)
-    const trip = trips.find((t) => t.bookingId === booking.id)
+    const payment = paymentList.find((p) => p.bookingId === booking.id)
+    const trip = tripList.find((t) => t.bookingId === booking.id)
     return {
       booking,
       user,

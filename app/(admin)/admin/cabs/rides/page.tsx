@@ -13,7 +13,7 @@ import {
 import type { Column, Action } from '@/shared/components'
 import { Plus, Search, Filter, Download, Eye, Edit, XCircle } from 'lucide-react'
 import { mockRides } from '@/modules/cabs/mockData'
-import { CabStatusBadge, PaymentStatusBadge } from '@/modules/cabs/components'
+import { CabStatusBadge, PaymentStatusBadgeLegacy } from '@/modules/cabs/components'
 import type { CabRide, RideStatus, PaymentStatus } from '@/modules/cabs/types'
 import { formatCurrency, formatDate } from '@/shared/lib'
 import { useAuth, canDeleteRecords } from '@/core/auth'
@@ -156,7 +156,7 @@ export default function CabsRidesPage() {
     {
       key: 'paymentStatus',
       label: 'Payment',
-      render: (value) => <PaymentStatusBadge status={value as PaymentStatus} />,
+      render: (value) => <PaymentStatusBadgeLegacy status={value as PaymentStatus} />,
     },
     {
       key: 'rideDate',

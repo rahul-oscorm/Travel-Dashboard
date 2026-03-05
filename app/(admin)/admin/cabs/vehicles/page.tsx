@@ -11,16 +11,16 @@ import {
 import type { Column } from '@/shared/components'
 import { vehicles, vehicleTypes, drivers } from '@/modules/cabs/mockData'
 import { VehicleStatusBadge } from '@/modules/cabs/components'
-import type { Vehicle } from '@/modules/cabs/types'
+import type { VehicleEntity } from '@/modules/cabs/types'
 
-type VehicleRow = Vehicle & { typeName: string; driverName: string }
+type VehicleRow = VehicleEntity & { typeName: string; driverName: string }
 
 export default function CabsVehiclesPage(): React.ReactElement {
-  const vehicleTypeMap = useMemo(() => new Map(vehicleTypes.map((vt) => [vt.id, vt])), [])
-  const driverMap = useMemo(() => new Map(drivers.map((d) => [d.id, d])), [])
+  const vehicleTypeMap = useMemo(() => new Map((vehicleTypes ?? []).map((vt) => [vt.id, vt])), [])
+  const driverMap = useMemo(() => new Map((drivers ?? []).map((d) => [d.id, d])), [])
 
   const rows = useMemo((): VehicleRow[] => {
-    return vehicles.map((v) => ({
+    return (vehicles ?? []).map((v) => ({
       ...v,
       typeName: vehicleTypeMap.get(v.typeId)?.name ?? v.typeId,
       driverName: driverMap.get(v.driverId)?.name ?? v.driverId,

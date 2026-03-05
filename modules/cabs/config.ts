@@ -6,9 +6,12 @@ export const CABS_MODULE_CONFIG = {
   },
   routes: {
     overview: '/admin/cabs',
+    bookings: '/admin/cabs/bookings',
     rides: '/admin/cabs/rides',
     drivers: '/admin/cabs/drivers',
     vehicles: '/admin/cabs/vehicles',
+    trips: '/admin/cabs/trips',
+    payments: '/admin/cabs/payments',
   },
   features: {
     createEnabled: true,

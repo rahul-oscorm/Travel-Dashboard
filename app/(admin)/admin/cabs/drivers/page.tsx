@@ -22,14 +22,14 @@ export default function CabsDriversPage(): React.ReactElement {
 
   const driverTripsCount = useMemo(() => {
     const count = new Map<string, number>()
-    trips.forEach((t) => {
+    ;(trips ?? []).forEach((t) => {
       count.set(t.driverId, (count.get(t.driverId) ?? 0) + 1)
     })
     return count
   }, [])
 
   const filteredDrivers = useMemo((): DriverRow[] => {
-    const list = drivers.map((d) => ({
+    const list = (drivers ?? []).map((d) => ({
       ...d,
       totalTrips: driverTripsCount.get(d.id) ?? 0,
     }))

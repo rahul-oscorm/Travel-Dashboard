@@ -13,11 +13,11 @@ import type { Column } from '@/shared/components'
 import { formatCurrency, formatDate } from '@/shared/lib'
 import { payments, users } from '@/modules/cabs/mockData'
 import { PaymentStatusBadge } from '@/modules/cabs/components'
-import type { Payment, PaymentStatus } from '@/modules/cabs/types'
+import type { Payment, PaymentStatusNew } from '@/modules/cabs/types'
 
 type PaymentRow = Payment & { userName: string }
 
-const STATUS_OPTIONS: Array<'all' | PaymentStatus> = [
+const STATUS_OPTIONS: Array<'all' | PaymentStatusNew> = [
   'all',
   'pending',
   'success',
@@ -30,10 +30,10 @@ export default function CabsPaymentsPage(): React.ReactElement {
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
 
-  const userMap = useMemo(() => new Map(users.map((u) => [u.id, u])), [])
+  const userMap = useMemo(() => new Map((users ?? []).map((u) => [u.id, u])), [])
 
   const filteredPayments = useMemo((): PaymentRow[] => {
-    let list = payments.map((p) => ({
+    let list = (payments ?? []).map((p) => ({
       ...p,
       userName: userMap.get(p.userId)?.name ?? p.userId,
     }))
