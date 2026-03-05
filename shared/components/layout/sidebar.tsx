@@ -152,7 +152,7 @@ export function Sidebar() {
                 <span className="text-sm font-bold text-white">ES</span>
               </div>
               <span className="text-lg font-bold text-gray-900">
-                EasY SKYTRIP
+                Easy SkyTrip
               </span>
             </Link>
           )}
