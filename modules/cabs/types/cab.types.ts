@@ -52,3 +52,34 @@ export type DriverAvailability = 'available' | 'busy'
 export type DriverStatus = 'active' | 'inactive'
 
 export type VehicleStatus = 'active' | 'inactive'
+
+// Cab Inventory (Add Cab form)
+export type VehicleCategory = 'Hatchback' | 'Sedan' | 'SUV'
+export type FuelType = 'Petrol' | 'Diesel' | 'CNG' | 'EV'
+export type TransmissionType = 'Manual' | 'Automatic'
+export type PermitType = 'Local' | 'National'
+export type InventoryStatus = 'Active' | 'Maintenance' | 'Inactive'
+
+export interface CabInventoryFormData {
+  vendor_id: number
+  car_name: string
+  brand: string
+  model: string
+  variant?: string
+  manufacturing_year: number
+  vehicle_category: VehicleCategory
+  fuel_type: FuelType
+  transmission: TransmissionType
+  seating_capacity: number
+  luggage_capacity?: number
+  air_conditioning: boolean
+  registration_number: string
+  permit_type: PermitType
+  insurance_expiry_date: string
+  base_price_per_day: number
+  price_per_km?: number
+  inventory_status: InventoryStatus
+  thumbnail_image?: string
+  car_images?: string
+  description?: string
+}

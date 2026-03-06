@@ -27,7 +27,7 @@ export default function DashboardPage() {
   const stats = {
     totalBookings: 3847,
     activeUsers: 1256,
-    monthlyRevenue: 4235890,
+    monthlyRevenue: 435890,
     completionRate: 94.5,
   }
 

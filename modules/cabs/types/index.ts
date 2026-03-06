@@ -9,6 +9,12 @@ export type {
   DriverAvailability,
   DriverStatus,
   VehicleStatus,
+  VehicleCategory,
+  FuelType,
+  TransmissionType,
+  PermitType,
+  InventoryStatus,
+  CabInventoryFormData,
 } from './cab.types'
 export type { User, UserStatus } from './user.types'
 export type { CabDriver, CabDriverStatus } from './driver.types'

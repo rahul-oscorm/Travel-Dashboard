@@ -57,6 +57,8 @@ export const modules: ModuleConfig[] = [
     description: 'Cab bookings, drivers, vehicles, trips and payments',
     subRoutes: [
       { label: 'Overview', route: '/admin/cabs' },
+      { label: 'Inventory', route: '/admin/cabs/inventory' },
+      { label: 'Add Vehicle', route: '/admin/cabs/add-vehicle' },
       { label: 'Bookings', route: '/admin/cabs/bookings' },
       { label: 'Drivers', route: '/admin/cabs/drivers' },
       { label: 'Vehicles', route: '/admin/cabs/vehicles' },
