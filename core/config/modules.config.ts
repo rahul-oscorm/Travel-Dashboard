@@ -6,6 +6,7 @@ import {
   Users,
   FileText,
   Settings,
+  CreditCard,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -64,6 +65,21 @@ export const modules: ModuleConfig[] = [
       { label: 'Vehicles', route: '/admin/cabs/vehicles' },
       { label: 'Trips', route: '/admin/cabs/trips' },
       { label: 'Payments', route: '/admin/cabs/payments' },
+    ],
+  },
+  {
+    key: 'payments',
+    name: 'Payments',
+    icon: CreditCard,
+    route: '/admin/payments',
+    enabled: true,
+    description: 'Payments and refunds across modules',
+    subRoutes: [
+      { label: 'Dashboard', route: '/admin/payments' },
+      { label: 'List', route: '/admin/payments/list' },
+      { label: 'Refunds', route: '/admin/payments/refunds' },
+      { label: 'Failed', route: '/admin/payments/failed' },
+      { label: 'Reports', route: '/admin/payments/reports' },
     ],
   },
   {

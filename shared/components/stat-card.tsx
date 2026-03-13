@@ -24,13 +24,13 @@ export function StatCard({
   className,
 }: StatCardProps) {
   return (
-    <Card className={cn('hover:shadow-md transition-shadow', className)}>
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
+    <Card className={cn('hover:shadow-md transition-shadow min-w-0 overflow-hidden', className)}>
+      <CardContent className="p-4 sm:p-6">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
             <p className="text-sm font-medium text-gray-600">{title}</p>
             <div className="mt-2 flex items-baseline gap-2">
-              <h3 className="text-3xl font-bold text-gray-900">{value}</h3>
+              <h3 className="truncate text-2xl font-bold text-gray-900 sm:text-3xl">{value}</h3>
               {trend && (
                 <span
                   className={cn(
@@ -47,8 +47,8 @@ export function StatCard({
               <p className="mt-1 text-xs text-gray-500">{description}</p>
             )}
           </div>
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
-            <Icon className="h-6 w-6 text-primary-600" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 sm:h-12 sm:w-12">
+            <Icon className="h-5 w-5 text-primary-600 sm:h-6 sm:w-6" />
           </div>
         </div>
       </CardContent>
